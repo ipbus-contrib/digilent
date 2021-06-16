@@ -5,7 +5,8 @@ src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_top.vhd
 src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_twi.vhd
 src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_package.vhd
 src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_addr_gen.vhd
-src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_alu.vhdsrc -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_application_image.vhd
+src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_alu.vhd
+#src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_application_image.vhd
 src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_bootloader_image.vhd
 src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_boot_rom.vhd
 src -c neo430: --cd ../../../../src/neo430/rtl/core   neo430_control.vhd

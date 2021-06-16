@@ -33,7 +33,7 @@ create_clock -period 20.000 -name osc_clk [get_ports osc_clk]
 set_property IOSTANDARD LVCMOS33 [get_ports osc_clk]
 set_property PACKAGE_PIN R4 [get_ports osc_clk]
 
-# RGMII pin constraints ## Done
+# RGMII pin constraints
 set_property IOSTANDARD LVCMOS33 [get_ports {phy_rstn}]
 set_property IOSTANDARD LVCMOS25 [get_ports {rgmii_*}]
 set_property PACKAGE_PIN Y12 [get_ports {rgmii_txd[0]}]
@@ -52,13 +52,13 @@ set_property PACKAGE_PIN U7 [get_ports {phy_rstn}]
 false_path {phy_rstn} osc_clk
 
 
-# LED pin constraints ## Done
+# LED pin constraints
 set_property IOSTANDARD LVCMOS25 [get_ports {leds[*]}]
 set_property SLEW SLOW [get_ports {leds[*]}]
-set_property PACKAGE_PIN T14 [get_ports {leds[0]}] #Done
-set_property PACKAGE_PIN T15 [get_ports {leds[1]}] #Done
-set_property PACKAGE_PIN T16 [get_ports {leds[2]}] #Done
-set_property PACKAGE_PIN U16 [get_ports {leds[3]}] #Done
+set_property PACKAGE_PIN T14 [get_ports {leds[0]}] 
+set_property PACKAGE_PIN T15 [get_ports {leds[1]}] 
+set_property PACKAGE_PIN T16 [get_ports {leds[2]}] 
+set_property PACKAGE_PIN U16 [get_ports {leds[3]}]
 false_path {leds[*]} osc_clk
 
 
@@ -75,8 +75,8 @@ if { [llength [get_ports {cfg[*]}]] > 0} {
 
 # UART pins (not always used). ## Done
 set_property IOSTANDARD LVCMOS33 [get_port {FTDI_*}]
-set_property PACKAGE_PIN AA19 [get_port {FTDI_RXD}] ## Done
-set_property PACKAGE_PIN V18 [get_port {FTDI_TXD}] ## Done
+set_property PACKAGE_PIN AA19 [get_port {FTDI_RXD}]
+set_property PACKAGE_PIN V18 [get_port {FTDI_TXD}]
 }
 
 # Clock constraints

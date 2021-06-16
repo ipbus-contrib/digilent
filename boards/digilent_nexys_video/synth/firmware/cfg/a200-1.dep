@@ -25,5 +25,5 @@
 
 @device_family = "artix7"
 @device_name = "xc7a200t"
-@device_package = "sbg484c"
+@device_package = "sbg484"
 @device_speed = "-1"
