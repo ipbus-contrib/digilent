@@ -24,7 +24,7 @@
 ---------------------------------------------------------------------------------
 
 
--- enclustra_ax3_pm3_macprom_infra
+-- digilent_macprom_infra
 --
 -- All board-specific stuff goes here
 --

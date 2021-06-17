@@ -33,6 +33,13 @@ create_clock -period 20.000 -name osc_clk [get_ports osc_clk]
 set_property IOSTANDARD LVCMOS33 [get_ports osc_clk]
 set_property PACKAGE_PIN R4 [get_ports osc_clk]
 
+# Voltage Adjust
+set_property IOSTANDARD LVCMOS25 [get_ports {set_vadj}]
+set_property IOSTANDARD LVCMOS25 [get_ports {vadj_en}]
+set_property PACKAGE_PIN AA13 [get_ports {set_vadj[0]}]
+set_property PACKAGE_PIN AB17 [get_ports {set_vadj[1]}]
+set_property PACKAGE_PIN V14 [get_ports {vadj_en}]
+
 # RGMII pin constraints
 set_property IOSTANDARD LVCMOS33 [get_ports {phy_rstn}]
 set_property IOSTANDARD LVCMOS25 [get_ports {rgmii_*}]
@@ -63,7 +70,7 @@ false_path {leds[*]} osc_clk
 
 
 # Configuration pins. On bank 16. Programmable voltage rail VADJ. FMC connector
-# on same bank. ## Done
+# on same bank.
 if { [llength [get_ports {cfg[*]}]] > 0} {
   set_property IOSTANDARD LVCMOS25 [get_ports {cfg[*]}]
   set_property PULLUP TRUE [get_ports {cfg[*]}]
@@ -73,11 +80,10 @@ if { [llength [get_ports {cfg[*]}]] > 0} {
   set_property PACKAGE_PIN G22 [get_ports {cfg[3]}]
 }
 
-# UART pins (not always used). ## Done
+# UART pins (not always used).
 set_property IOSTANDARD LVCMOS33 [get_port {FTDI_*}]
 set_property PACKAGE_PIN AA19 [get_port {FTDI_RXD}]
 set_property PACKAGE_PIN V18 [get_port {FTDI_TXD}]
-}
 
 # Clock constraints
 set_false_path -through [get_pins infra/clocks/rst_reg/Q]

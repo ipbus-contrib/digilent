@@ -53,8 +53,9 @@ entity top is port(
 		uid_scl: inout std_logic; -- I2C lines for PROM containing MAC address
 		uid_sda: inout std_logic;
 		FTDI_TXD : in   std_ulogic; -- UART send data on serial/USB chip
-    	FTDI_RXD : out  std_ulogic -- UART receive data on serial/USB chip
-
+    	FTDI_RXD : out  std_ulogic; -- UART receive data on serial/USB chip
+        set_vadj : out std_logic_vector(1 downto 0);
+        vadj_en : out std_logic
 	);
 
 end top;
@@ -73,7 +74,9 @@ architecture rtl of top is
 begin
 
 -- Infrastructure
-
+    set_vadj <= "10";
+    vadj_en <= '1';
+    
 -- Tri-state I2C lines:
 	uid_sda <= '0'  when ((uid_sda_o= '0') or (neo430_sda_o= '0')) else 'Z';
 	uid_scl <= '0'  when ((uid_scl_o= '0') or (neo430_scl_o= '0')) else 'Z';
