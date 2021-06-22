@@ -85,6 +85,10 @@ set_property IOSTANDARD LVCMOS33 [get_port {FTDI_*}]
 set_property PACKAGE_PIN AA19 [get_port {FTDI_RXD}]
 set_property PACKAGE_PIN V18 [get_port {FTDI_TXD}]
 
+## Configuration options.
+set_property CONFIG_VOLTAGE 3.3 [current_design]
+set_property CFGBVS VCCO [current_design]
+
 # Clock constraints
 set_false_path -through [get_pins infra/clocks/rst_reg/Q]
 set_false_path -through [get_nets infra/clocks/nuke_i]

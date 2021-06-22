@@ -83,7 +83,7 @@ begin
 
 
 	infra: entity work.digilent_macprom_infra
-	   generic map( UID_I2C_ADDR => x"50", -- location in I2C map of PROM holding MAC addr.
+	   generic map( UID_I2C_ADDR => x"53", -- location in I2C map of PROM holding MAC addr.
 	                                     
 	                FORCE_RARP => True
 	   )
