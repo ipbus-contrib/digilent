@@ -37,7 +37,8 @@ use work.ipbus.all;
 
 entity digilent_macprom_infra is
 	generic (
-          CLK_AUX_FREQ : real := 40.0 ; -- Default: 40 MHz clock - LHC
+          CLK_AUX_FREQ : real := 40.0; -- Default: 40 MHz clock - LHC
+          CLK_FR_FREQ: real := 100.0; -- free-running clock frequency
           FORCE_RARP : boolean := False; -- Set True in order to force use of RARP, regardless of PROM
           UID_I2C_ADDR : std_logic_vector(7 downto 0) := x"53" -- Address on I2C bus of E24AA025E
 		);
@@ -93,7 +94,8 @@ begin
 
 	clocks: entity work.clocks_7s_extphy_se
 		generic map(
-			CLK_AUX_FREQ => CLK_AUX_FREQ
+			CLK_AUX_FREQ => CLK_AUX_FREQ,
+			CLK_FR_FREQ => CLK_FR_FREQ
 			)
 		port map(
 			sysclk => osc_clk,

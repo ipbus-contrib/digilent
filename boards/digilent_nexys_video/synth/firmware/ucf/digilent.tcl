@@ -28,8 +28,8 @@
 set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
 
 
-# System clock (200MHz)
-create_clock -period 20.000 -name osc_clk [get_ports osc_clk]
+# System clock (100MHz)
+create_clock -period 10.000 -name osc_clk [get_ports osc_clk]
 set_property IOSTANDARD LVCMOS33 [get_ports osc_clk]
 set_property PACKAGE_PIN R4 [get_ports osc_clk]
 
@@ -73,7 +73,6 @@ false_path {leds[*]} osc_clk
 # on same bank.
 if { [llength [get_ports {cfg[*]}]] > 0} {
   set_property IOSTANDARD LVCMOS25 [get_ports {cfg[*]}]
-  set_property PULLUP TRUE [get_ports {cfg[*]}]
   set_property PACKAGE_PIN E22 [get_ports {cfg[0]}]
   set_property PACKAGE_PIN F21 [get_ports {cfg[1]}]
   set_property PACKAGE_PIN G21 [get_ports {cfg[2]}]

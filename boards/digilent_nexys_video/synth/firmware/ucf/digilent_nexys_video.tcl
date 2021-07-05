@@ -28,7 +28,7 @@
 set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
 
 
-# System clock (50MHz)
+# System clock (100MHz)
 create_clock -period 10.000 -name osc_clk [get_ports osc_clk]
 set_property IOSTANDARD LVCMOS33 [get_ports osc_clk]
 set_property PACKAGE_PIN R4 [get_ports osc_clk]
@@ -74,8 +74,8 @@ if { [llength [get_ports {cfg[*]}]] > 0} {
   set_property IOSTANDARD LVCMOS25 [get_ports {cfg[*]}]
   set_property PACKAGE_PIN E22 [get_ports {cfg[0]}]
   set_property PACKAGE_PIN F21 [get_ports {cfg[1]}]
-  set_property PACKAGE_PIN K13 [get_ports {cfg[2]}]
-  set_property PACKAGE_PIN M17 [get_ports {cfg[3]}]
+  set_property PACKAGE_PIN G21 [get_ports {cfg[2]}]
+  set_property PACKAGE_PIN G22 [get_ports {cfg[3]}]
 }
 
 # UART pins (not always used).
