@@ -26,8 +26,7 @@
 
 -- Top-level design for ipbus demo
 --
--- This version is for Enclustra AX3 module, using the RGMII PHY on the PM3 baseboard
---
+-- This version is for digilent nexys video. Using the onboard RGMII PHY.
 -- You must edit this file to set the IP and MAC addresses
 --
 -- Dave Newbold, 4/10/16
@@ -62,11 +61,6 @@ architecture rtl of top is
 	signal ipb_out: ipb_wbus;
 	signal ipb_in: ipb_rbus;
 	signal inf_leds: std_logic_vector(1 downto 0);
-	
-	attribute mark_debug : string; 
-	attribute mark_debug of mac_addr       : signal is "true";
-	attribute mark_debug of ip_addr        : signal is "true";
-	attribute mark_debug of phy_rst_e      : signal is "true";
 	
 begin
 
@@ -118,5 +112,5 @@ begin
 			soft_rst => soft_rst,
 			userled => userled
 		);
-
+		
 end rtl;

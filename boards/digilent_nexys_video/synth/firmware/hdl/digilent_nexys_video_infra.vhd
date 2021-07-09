@@ -42,12 +42,12 @@ entity digilent_nexys_video_infra is
 		);
 		
 	port(
-		osc_clk: in std_logic; -- 50MHz board crystal clock
+		osc_clk: in std_logic; -- 100MHz board crystal clock
 		clk_ipb_o: out std_logic; -- IPbus clock
 		rst_ipb_o: out std_logic;
 		clk125_o: out std_logic;
 		rst125_o: out std_logic;
-		clk_aux_o: out std_logic; -- 50MHz clock
+		clk_aux_o: out std_logic;
 		rst_aux_o: out std_logic;
 		nuke: in std_logic; -- The signal of doom
 		soft_rst: in std_logic; -- The signal of lesser doom
@@ -72,18 +72,6 @@ architecture rtl of digilent_nexys_video_infra is
 	signal mac_tx_data, mac_rx_data: std_logic_vector(7 downto 0);
 	signal mac_tx_valid, mac_tx_last, mac_tx_error, mac_tx_ready, mac_rx_valid, mac_rx_last, mac_rx_error: std_logic;
 	signal led_p: std_logic_vector(0 downto 0);
-	
-    attribute mark_debug : string;
-    attribute mark_debug of mac_tx_data  : signal is "true";
-    attribute mark_debug of mac_tx_valid : signal is "true";
-    attribute mark_debug of mac_tx_last  : signal is "true";
-    attribute mark_debug of mac_tx_error : signal is "true";
-    attribute mark_debug of mac_tx_ready : signal is "true";
-    attribute mark_debug of mac_rx_data  : signal is "true";
-    attribute mark_debug of mac_rx_valid : signal is "true";
-    attribute mark_debug of mac_rx_last  : signal is "true";
-    attribute mark_debug of mac_rx_error : signal is "true";
-    
 	
 begin
 
@@ -179,4 +167,5 @@ begin
 			ip_addr => ip_addr,
 			pkt => pkt
 		);
+		
 end rtl;
