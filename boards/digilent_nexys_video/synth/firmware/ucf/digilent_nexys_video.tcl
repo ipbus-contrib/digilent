@@ -106,3 +106,6 @@ create_generated_clock -name clk_aux -source [get_pins infra/clocks/mmcm/CLKIN1]
 
 
 set_clock_groups -asynchronous -group [get_clocks ipbus_clk] -group [get_clocks -include_generated_clocks [get_clocks clk_aux]]
+
+set_property IDELAY_VALUE 11 [get_cells {infra/eth/emac0/U0/rgmii_interface/rxdata_bus[*].delay_rgmii_rxd}]
+set_property IDELAY_VALUE 10 [get_cells {infra/eth/emac0/U0/rgmii_interface/delay_rgmii_rx_ctl}]

@@ -33,6 +33,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+Library UNISIM;
+use UNISIM.vcomponents.all;
+
 use work.ipbus.all;
 
 entity digilent_nexys_video_infra is
@@ -167,5 +170,5 @@ begin
 			ip_addr => ip_addr,
 			pkt => pkt
 		);
-		
+        
 end rtl;
