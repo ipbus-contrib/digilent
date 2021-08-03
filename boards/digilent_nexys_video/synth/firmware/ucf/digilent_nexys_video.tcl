@@ -33,7 +33,7 @@ create_clock -period 10.000 -name osc_clk [get_ports osc_clk]
 set_property IOSTANDARD LVCMOS33 [get_ports osc_clk]
 set_property PACKAGE_PIN R4 [get_ports osc_clk]
 
-# Voltage Adjust
+# Voltage adjust
 set_property IOSTANDARD LVCMOS25 [get_ports {set_vadj}]
 set_property IOSTANDARD LVCMOS25 [get_ports {vadj_en}]
 set_property PACKAGE_PIN AA13 [get_ports {set_vadj[0]}]

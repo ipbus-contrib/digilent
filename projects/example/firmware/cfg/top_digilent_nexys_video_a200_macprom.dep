@@ -24,9 +24,10 @@
 #-------------------------------------------------------------------------------
 
 
-src digilent_macprom_infra.vhd
-include -c components/neo430_wrapper neo430_wrapper_24AA025E.dep
-src -c ipbus-firmware:components/ipbus_util clocks/clocks_7s_extphy_se.vhd ipbus_clock_div.vhd led_stretcher.vhd
-include -c ipbus-firmware:components/ipbus_util ipbus_ctrl.dep
-include -c ipbus-firmware:components/ipbus_eth artix_rgmii.dep
-src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd ipbus_package.vhd
+src -c boards/digilent_nexys_video/synth top_digilent_nexys_video_macprom.vhd
+
+src     -c boards/digilent_nexys_video/synth ../ucf/digilent_macprom_i2c.tcl
+
+include -c boards/digilent_nexys_video/synth  a200-1.dep
+include -c boards/digilent_nexys_video/synth digilent_nexys_video_macprom.dep
+include -c ipbus-firmware:components/ipbus_util ipbus_example.dep
