@@ -70,6 +70,11 @@ architecture rtl of top is
     
     signal uid_sda_o , uid_scl_o : std_logic := '1'; -- In a full design these would be connected to payload 
                                                      -- and provide access to the I2C bus from IPBus
+    attribute mark_debug: string;
+    attribute mark_debug of neo430_sda_o : signal is "true";
+    attribute mark_debug of neo430_scl_o : signal is "true";
+    attribute mark_debug of uid_sda_o : signal is "true";
+    attribute mark_debug of uid_scl_o : signal is "true";
     
 begin
 

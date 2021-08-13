@@ -115,9 +115,14 @@ architecture rtl of digilent_nexys_video_macprom_infra is
     
     attribute mark_debug: string;
     attribute mark_debug of RARP_select : signal is "true";
+    attribute mark_debug of s_mac_addr : signal is "true"; 
+    attribute mark_debug of s_ip_addr : signal is "true";
+    attribute mark_debug of s_neo430_mac_addr : signal is "true";
+    attribute mark_debug of s_neo430_ip_addr : signal is "true";
     attribute mark_debug of neo430_RARP_select : signal is "true";
     attribute mark_debug of rst_ipb_ctrl : signal is "true";
     attribute mark_debug of internal_nuke : signal is "true";
+    
 begin
 
 --	DCM clock generation for internal bus, ethernet
@@ -189,6 +194,12 @@ begin
         			);
     end generate gen_softcore;
 
+-- If soft core not used need to tie I2C line high.
+    gen_neo_i2c: if USE_NEO430 = false generate
+        uid_scl_o <= '1';
+        uid_sda_o <= '1';
+    end generate gen_neo_i2c;
+
 	-- combine resets
 	internal_nuke <= nuke or neo430_nuke;
 
@@ -236,8 +247,8 @@ begin
 			ipb_out => ipb_out,
 			ipb_in => ipb_in,
 			RARP_select => RARP_select,
-			mac_addr => mac_addr,
-			ip_addr => ip_addr,
+			mac_addr => s_mac_addr,
+			ip_addr => s_ip_addr,
 			pkt => pkt
 		);
 		
