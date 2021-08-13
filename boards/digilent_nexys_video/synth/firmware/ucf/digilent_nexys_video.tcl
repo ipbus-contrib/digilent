@@ -79,9 +79,9 @@ if { [llength [get_ports {cfg[*]}]] > 0} {
 }
 
 # UART pins (not always used).
-#set_property IOSTANDARD LVCMOS33 [get_port {FTDI_*}]
-#set_property PACKAGE_PIN AA19 [get_port {FTDI_RXD}]
-#set_property PACKAGE_PIN V18 [get_port {FTDI_TXD}]
+set_property IOSTANDARD LVCMOS33 [get_port {FTDI_*}]
+set_property PACKAGE_PIN AA19 [get_port {FTDI_RXD}]
+set_property PACKAGE_PIN V18 [get_port {FTDI_TXD}]
 
 ## Configuration options.
 set_property CONFIG_VOLTAGE 3.3 [current_design]
