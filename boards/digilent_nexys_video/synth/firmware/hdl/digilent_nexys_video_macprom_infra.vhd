@@ -44,7 +44,7 @@ entity digilent_nexys_video_macprom_infra is
           NEO430_CLOCK_SPEED    : natural := 31250000 ; -- soft core clock speed
           
           FORCE_RARP    : boolean := False; -- Set True in order to force use of RARP, regardless of PROM
-          UID_I2C_ADDR  : std_logic_vector(7 downto 0) := x"53" -- Address on I2C bus of E24AA025E
+          UID_I2C_ADDR  : std_logic_vector(7 downto 0) := x"50" -- Address on I2C bus of E24AA025E
 		);
 	port(
 		osc_clk       : in std_logic; -- 50MHz board crystal clock
@@ -84,7 +84,7 @@ architecture rtl of digilent_nexys_video_macprom_infra is
     COMPONENT ipbus_neo430_wrapper IS
     GENERIC( 
         CLOCK_SPEED : natural := 31250000;
-        UID_I2C_ADDR : std_logic_vector(7 downto 0) := x"53" -- Address on I2C bus of E24AA025E
+        UID_I2C_ADDR : std_logic_vector(7 downto 0) := x"50" -- Address on I2C bus of E24AA025E
         );
     PORT( 
         clk_i      : IN     std_logic;                      -- global clock, rising edge
@@ -114,15 +114,24 @@ architecture rtl of digilent_nexys_video_macprom_infra is
     signal neo430_RARP_select , RARP_select : std_logic; -- set high to use RARP
     
     attribute mark_debug: string;
-    attribute mark_debug of RARP_select : signal is "true";
-    attribute mark_debug of s_mac_addr : signal is "true"; 
+    attribute mark_debug of nuke : signal is "true";
+    attribute mark_debug of internal_nuke : signal is "true"; 
+    attribute mark_debug of neo430_nuke: signal is "true";
+    attribute mark_debug of s_mac_addr : signal is "true";
     attribute mark_debug of s_ip_addr : signal is "true";
-    attribute mark_debug of s_neo430_mac_addr : signal is "true";
-    attribute mark_debug of s_neo430_ip_addr : signal is "true";
-    attribute mark_debug of neo430_RARP_select : signal is "true";
-    attribute mark_debug of rst_ipb_ctrl : signal is "true";
-    attribute mark_debug of internal_nuke : signal is "true";
+--    attribute mark_debug of neo430_RARP_select : signal is "true";
+--    attribute mark_debug of rst_ipb_ctrl : signal is "true";
+--    attribute mark_debug of internal_nuke : signal is "true";
     
+--    attribute mark_debug of mac_tx_data : signal is "true";
+--    attribute mark_debug of mac_tx_valid : signal is "true";
+--    attribute mark_debug of mac_tx_last : signal is "true";
+--    attribute mark_debug of mac_tx_error : signal is "true";
+--    attribute mark_debug of mac_tx_ready : signal is "true";
+--    attribute mark_debug of mac_rx_data : signal is "true";
+--    attribute mark_debug of mac_rx_valid : signal is "true";
+--    attribute mark_debug of mac_rx_last : signal is "true";
+--    attribute mark_debug of mac_rx_error : signal is "true";
 begin
 
 --	DCM clock generation for internal bus, ethernet
