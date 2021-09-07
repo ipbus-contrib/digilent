@@ -51,8 +51,8 @@ bool useRARP;
  * ------------------------------------------------------------ */
 int setMacIP(void){
 
-  // first enable I2C brige
-  enable_i2c_bridge();
+  // first enable I2C brige - Not on digilent.
+  //enable_i2c_bridge();
 
   // set IPBus reset
   neo430_wishbone_writeIPBusReset(true);
@@ -171,8 +171,9 @@ int main(void) {
         break;
 
       case 2: // Enable I2C Bridge
-	     
-	enable_i2c_bridge();
+	 neo430_uart_br_print("The Digilent Nexys Video doesn't have a I2C bridge.\n Nothing to enable.\n");
+	//enable_i2c_bridge();
+	
         break;
 
       case 3: // read from Unique ID address
