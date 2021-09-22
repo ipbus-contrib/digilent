@@ -8,7 +8,7 @@ USE neo430.neo430_package.all;
 ENTITY ipbus_neo430_wrapper IS
   GENERIC( 
     CLOCK_SPEED : natural := 31250000;
-    UID_I2C_ADDR : std_logic_vector(7 downto 0) := x"50" -- Address on I2C bus of 24AA025E48
+    UID_I2C_ADDR : std_logic_vector(7 downto 0) := x"53" -- Address on I2C bus of 24AA025E48
     );
   PORT( 
     clk_i      : IN     std_logic;                      -- global clock, rising edge

@@ -8,8 +8,7 @@
 	cd build
 
 	ipbb add git https://github.com/ipbus/ipbus-firmware.git -b  v1.8
-	ipbb add git -b developer git@github.com:ipbus-contrib/digilent.git 
-	ipbb add git https://github.com/stnolting/neo430.git -b 0x0408
+	ipbb add git git@github.com:ipbus-contrib/digilent.git 
 	
 	# These next steps compile the software running on the neo430.
 	# These are only required if you want to read mac address from prom. 

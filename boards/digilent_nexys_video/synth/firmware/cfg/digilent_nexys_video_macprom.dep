@@ -26,7 +26,7 @@
 
 setup settings_v7.tcl
 @vivado.mcsfile_options ="-size 64 -interface SPIx4" 
-include digilent_macprom_infra_24AA025E.dep
+include digilent_nexys_video_macprom_infra.dep
 src -c ipbus-firmware:components/ipbus_core ipbus_package.vhd
-src --cd ../ucf digilent.tcl
+src --cd ../ucf digilent_nexys_video.tcl
 src -c ipbus-firmware:components/ipbus_util --cd ../ucf clock_utils.tcl

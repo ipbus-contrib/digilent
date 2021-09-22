@@ -28,12 +28,12 @@
 set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
 
 
-# System clock (100MHz)
+# System clock (100MHz). R4 on bank 34, 3v3.
 create_clock -period 10.000 -name osc_clk [get_ports osc_clk]
 set_property IOSTANDARD LVCMOS33 [get_ports osc_clk]
 set_property PACKAGE_PIN R4 [get_ports osc_clk]
 
-# Voltage Adjust
+# Set Vadj. Bank 13, 2v5.
 set_property IOSTANDARD LVCMOS25 [get_ports {set_vadj}]
 set_property IOSTANDARD LVCMOS25 [get_ports {vadj_en}]
 set_property PACKAGE_PIN AA13 [get_ports {set_vadj[0]}]
@@ -41,6 +41,8 @@ set_property PACKAGE_PIN AB17 [get_ports {set_vadj[1]}]
 set_property PACKAGE_PIN V14 [get_ports {vadj_en}]
 
 # RGMII pin constraints
+# RGMII pins on bank 13, 2v5.
+# U7 on bank 34, 3v3.
 set_property IOSTANDARD LVCMOS33 [get_ports {phy_rstn}]
 set_property IOSTANDARD LVCMOS25 [get_ports {rgmii_*}]
 set_property PACKAGE_PIN Y12 [get_ports {rgmii_txd[0]}]
@@ -58,7 +60,7 @@ set_property PACKAGE_PIN V13 [get_ports {rgmii_rxc}]
 set_property PACKAGE_PIN U7 [get_ports {phy_rstn}]
 false_path {phy_rstn} osc_clk
 
-# LED pin constraints
+# LEDs on bank 13, 2v5.
 set_property IOSTANDARD LVCMOS25 [get_ports {leds[*]}]
 set_property SLEW SLOW [get_ports {leds[*]}]
 set_property PACKAGE_PIN T14 [get_ports {leds[0]}] 
@@ -68,8 +70,7 @@ set_property PACKAGE_PIN U16 [get_ports {leds[3]}]
 false_path {leds[*]} osc_clk
 
 
-# Configuration pins. On bank 16. Programmable voltage rail VADJ. FMC connector
-# on same bank.
+# Configuration pins on bank 16, Vadj.
 if { [llength [get_ports {cfg[*]}]] > 0} {
   set_property IOSTANDARD LVCMOS25 [get_ports {cfg[*]}]
   set_property PACKAGE_PIN E22 [get_ports {cfg[0]}]
@@ -77,11 +78,11 @@ if { [llength [get_ports {cfg[*]}]] > 0} {
   set_property PACKAGE_PIN G21 [get_ports {cfg[2]}]
   set_property PACKAGE_PIN G22 [get_ports {cfg[3]}]
 }
-
 # UART pins (not always used).
-#set_property IOSTANDARD LVCMOS33 [get_port {FTDI_*}]
-#set_property PACKAGE_PIN AA19 [get_port {FTDI_RXD}]
-#set_property PACKAGE_PIN V18 [get_port {FTDI_TXD}]
+# AA19 bank 0 (config). V18 bank 14, 3v3
+set_property IOSTANDARD LVCMOS33 [get_ports {FTDI_*}]
+set_property PACKAGE_PIN AA19 [get_ports {FTDI_RXD}]
+set_property PACKAGE_PIN V18 [get_ports {FTDI_TXD}]
 
 ## Configuration options.
 set_property CONFIG_VOLTAGE 3.3 [current_design]

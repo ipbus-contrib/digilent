@@ -70,6 +70,11 @@ architecture rtl of top is
     
     signal uid_sda_o , uid_scl_o : std_logic := '1'; -- In a full design these would be connected to payload 
                                                      -- and provide access to the I2C bus from IPBus
+    attribute mark_debug: string;
+    attribute mark_debug of neo430_sda_o : signal is "true";
+    attribute mark_debug of neo430_scl_o : signal is "true";
+    attribute mark_debug of uid_sda_o : signal is "true";
+    attribute mark_debug of uid_scl_o : signal is "true";
     
 begin
 
@@ -82,11 +87,13 @@ begin
 	uid_scl <= '0'  when ((uid_scl_o= '0') or (neo430_scl_o= '0')) else 'Z';
 
 
-	infra: entity work.digilent_macprom_infra
-	   generic map( UID_I2C_ADDR => x"53", -- location in I2C map of PROM holding MAC addr.
-	                                     
-	                FORCE_RARP => True
-	   )
+	infra: entity work.digilent_nexys_video_macprom_infra
+        generic map( 
+                    USE_NEO430 => True,
+                    FORCE_RARP => False,
+                    UID_I2C_ADDR => x"53" -- location in I2C map of PROM holding MAC addr.
+
+        )
 		port map(
 			osc_clk => osc_clk,
 			clk_ipb_o => clk_ipb,
