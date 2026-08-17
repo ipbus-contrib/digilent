@@ -113,12 +113,12 @@ architecture rtl of digilent_nexys_video_macprom_infra is
 	signal internal_nuke, neo430_nuke: std_logic;
     signal neo430_RARP_select , RARP_select : std_logic; -- set high to use RARP
     
-    attribute mark_debug: string;
-    attribute mark_debug of nuke : signal is "true";
-    attribute mark_debug of internal_nuke : signal is "true"; 
-    attribute mark_debug of neo430_nuke: signal is "true";
-    attribute mark_debug of s_mac_addr : signal is "true";
-    attribute mark_debug of s_ip_addr : signal is "true";
+    --attribute mark_debug: string;
+    --attribute mark_debug of nuke : signal is "true";
+    --attribute mark_debug of internal_nuke : signal is "true";
+    --attribute mark_debug of neo430_nuke: signal is "true";
+    --attribute mark_debug of s_mac_addr : signal is "true";
+    --attribute mark_debug of s_ip_addr : signal is "true";
 --    attribute mark_debug of neo430_RARP_select : signal is "true";
 --    attribute mark_debug of rst_ipb_ctrl : signal is "true";
 --    attribute mark_debug of internal_nuke : signal is "true";
